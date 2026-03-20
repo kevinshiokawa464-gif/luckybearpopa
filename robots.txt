@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Host: luckybear1.site
+Sitemap: https://luckybear1.site/sitemap.xml
