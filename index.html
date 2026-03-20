@@ -90,85 +90,48 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            background: linear-gradient(180deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+            background: #000;
             color: #fff;
-            padding: 24px 90px;
-            border-radius: 100px;
-            font-size: 28px;
+            padding: 24px 110px;
+            border-radius: 20px;
+            font-size: 32px;
             font-weight: 900;
             text-decoration: none;
             box-shadow: 
-                0 0 20px rgba(59, 130, 246, 0.4),
-                0 10px 30px rgba(0, 0, 0, 0.5),
-                inset 0 2px 2px rgba(255, 255, 255, 0.3),
-                inset 0 -4px 4px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                0 0 30px rgba(59, 130, 246, 0.6),
+                inset 0 0 15px rgba(59, 130, 246, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border: 2px solid rgba(59, 130, 246, 0.5);
+            letter-spacing: 2px;
+            border: 3px solid var(--accent);
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .main-cta::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 50%;
-            background: linear-gradient(rgba(255, 255, 255, 0.15), transparent);
-            border-radius: 100px 100px 0 0;
-            z-index: 1;
-        }
-
-        .main-cta::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -150%; width: 200%; height: 200%;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(255, 255, 255, 0) 30%, 
-                rgba(255, 255, 255, 0.8) 50%, 
-                rgba(255, 255, 255, 0) 70%, 
-                transparent 100%);
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
-            z-index: 2;
-        }
-
-        @keyframes shine {
-            0% { left: -150%; }
-            20% { left: 150%; }
-            100% { left: 150%; }
+            text-shadow: 0 0 10px var(--accent);
         }
 
         .main-cta:hover {
-            transform: scale(1.06) translateY(-3px);
-            box-shadow: 
-                0 0 40px rgba(59, 130, 246, 0.7),
-                0 15px 40px rgba(0, 0, 0, 0.6),
-                inset 0 2px 5px rgba(255, 255, 255, 0.4);
-            background: linear-gradient(180deg, #4f91ff 0%, #3b82f6 50%, #2563eb 100%);
+            transform: scale(1.05) translateY(-5px);
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 60px var(--accent);
+            text-shadow: none;
         }
 
-        .main-cta:active {
-            transform: scale(0.98) translateY(1px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-        }
+        .main-cta:active { transform: scale(0.95); }
 
         .main-cta span {
             position: relative;
             z-index: 3;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
-        /* Анимация иконки ракеты */
         .main-cta span::before {
             content: '🚀';
-            font-size: 32px;
-            animation: rocket-vibrate 0.3s infinite alternate;
+            font-size: 36px;
+            animation: rocket-vibrate 0.2s infinite alternate;
         }
 
         @keyframes rocket-vibrate {
