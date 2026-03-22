@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Bear — Казино Midnight Diamond | Официальный Бот ТГ</title>
+    
+    <!-- BULLETPROOF FAVICON -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐻</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐻</text></svg>">
+
+    <meta name="description" content="Лаки Бир Казино — Midnight Diamond Edition. Играйте в топовые слоты через Telegram бот. Быстрые выплаты и эксклюзивные бонусы в Lucky Bear!">
+    <meta name="yandex-source-region" content="225" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Inter:wght@400;600;800&display=swap');
+        
+        :root {
+            --bg: #01060e;
+            --bg-accent: #020b1a;
+            --accent: #00d2ff;
+            --accent-alt: #3a7bd5;
+            --accent-glow: rgba(0, 210, 255, 0.5);
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --card: rgba(15, 23, 42, 0.45);
+            --border: rgba(0, 210, 255, 0.15);
+            --border-hover: rgba(0, 210, 255, 0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+            -webkit-font-smoothing: antialiased; 
+            background-image: 
+                radial-gradient(circle at 50% -20%, rgba(0, 210, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(58, 123, 213, 0.05) 0%, transparent 40%);
+        }
+        
+        h1, h2, h3 { font-family: 'Unbounded', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -0.05em; }
+        p { font-weight: 500; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Header */
+        header { 
+            padding: 18px 0; 
+            background: rgba(1, 6, 14, 0.8); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            border-bottom: 1px solid var(--border); 
+        }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .nav-links { display: flex; gap: 40px; align-items: center; }
+        .nav-links a { 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 14px; 
+            text-transform: uppercase; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            letter-spacing: 0.05em;
+        }
+        .nav-links a:hover { color: var(--accent); text-shadow: 0 0 15px var(--accent-glow); }
+
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 14px; 
+            text-decoration: none; 
+            color: #fff; 
+            font-weight: 900; 
+            font-size: 24px; 
+            font-family: 'Unbounded', sans-serif;
+        }
+        .logo span { color: var(--accent); }
+        .logo-emoji { font-size: 32px; filter: drop-shadow(0 0 15px var(--accent-glow)); transition: 0.5s; }
+        .logo:hover .logo-emoji { transform: rotate(10deg) scale(1.1); }
+
+        .btn-tg { 
+            background: linear-gradient(135deg, var(--accent), var(--accent-alt)); 
+            color: #fff; 
+            padding: 12px 24px; 
+            border-radius: 12px; 
+            font-weight: 800; 
+            text-decoration: none; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            box-shadow: 0 8px 20px -5px var(--accent-glow); 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            text-transform: uppercase; 
+            font-size: 13px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-tg svg { width: 18px; height: 18px; fill: currentColor; }
+        .btn-tg:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 12px 25px -5px var(--accent); 
+            filter: brightness(1.1);
+        }
+
+        /* Hero */
+        .hero { padding: 120px 0 80px; text-align: center; position: relative; }
+        .hero-logo { 
+            font-size: 140px; 
+            margin-bottom: 20px; 
+            display: block; 
+            filter: drop-shadow(0 0 50px var(--accent-glow));
+            animation: float 6s ease-in-out infinite;
+        }
+        .welcome-text { 
+            font-size: 14px; 
+            font-weight: 800; 
+            color: var(--accent); 
+            margin-bottom: 20px; 
+            letter-spacing: 0.4em; 
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+        .hero h1 { 
+            font-size: clamp(2.5rem, 10vw, 5rem); 
+            color: #fff; 
+            margin-bottom: 30px; 
+            line-height: 1.1; 
+            background: linear-gradient(to bottom, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p { 
+            max-width: 750px; 
+            margin: 0 auto 45px; 
+            color: var(--text-muted); 
+            font-size: 18px; 
+            line-height: 1.7; 
+            font-weight: 500; 
+        }
+
+        .hero-btns { display: flex; justify-content: center; gap: 20px; }
+        .btn-main { 
+            padding: 20px 48px; 
+            border-radius: 16px; 
+            font-weight: 900; 
+            font-size: 16px; 
+            text-decoration: none; 
+            text-transform: uppercase; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            font-family: 'Unbounded', sans-serif;
+        }
+        .btn-filled { 
+            background: linear-gradient(135deg, var(--accent), var(--accent-alt)); 
+            color: #fff; 
+            box-shadow: 0 10px 30px -10px var(--accent-glow); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-outline { 
+            border: 1px solid var(--border); 
+            color: #fff; 
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(5px);
+        }
+        .btn-main:hover { transform: translateY(-4px); }
+        .btn-filled:hover { box-shadow: 0 15px 40px -10px var(--accent); filter: brightness(1.1); }
+        .btn-outline:hover { border-color: var(--accent); background: rgba(0, 210, 255, 0.05); color: var(--accent); }
+
+        /* Why Choose */
+        .why-diamond { padding: 100px 0; }
+        .why-diamond h2 { 
+            text-align: center; 
+            font-size: clamp(1.8rem, 6vw, 3.2rem); 
+            margin-bottom: 80px; 
+            font-weight: 900; 
+            background: linear-gradient(135deg, #fff 30%, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .why-d-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .why-d-card { 
+            background: var(--card); 
+            border: 1px solid var(--border); 
+            border-radius: 32px; 
+            padding: 60px 40px; 
+            text-align: center; 
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+            position: relative; 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
+            overflow: hidden;
+        }
+        .why-d-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(0, 210, 255, 0.1), transparent 60%);
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .why-d-card:hover::before { opacity: 1; }
+        
+        .why-d-card.featured { 
+            border-color: var(--accent); 
+            box-shadow: 0 0 60px -20px rgba(0, 210, 255, 0.3); 
+            transform: scale(1.03); 
+            z-index: 2; 
+            background: rgba(15, 23, 42, 0.6);
+        }
+        .why-d-icon { font-size: 64px; margin-bottom: 30px; display: block; filter: drop-shadow(0 0 20px var(--accent-glow)); transition: 0.5s; }
+        .why-d-card h3 { color: #fff; margin-bottom: 20px; font-size: 22px; letter-spacing: 0.05em; }
+        .why-d-card p { color: var(--text-muted); font-size: 15px; line-height: 1.8; font-weight: 400; }
+        .why-d-card:hover { 
+            transform: translateY(-12px); 
+            border-color: var(--border-hover); 
+            background: rgba(15, 23, 42, 0.7); 
+        }
+        .why-d-card:hover .why-d-icon { transform: scale(1.1) rotate(5deg); }
+
+        @media (max-width: 992px) {
+            .nav-links { display: none; }
+            .why-d-grid { grid-template-columns: 1fr; gap: 20px; }
+            .why-d-card.featured { transform: scale(1); }
+        }
+
+        /* Games Grid */
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { 
+            font-size: clamp(1.8rem, 5vw, 2.8rem); 
+            color: #fff; 
+            margin-bottom: 15px; 
+            font-family: 'Unbounded', sans-serif;
+        }
+        .section-title h2 span { color: var(--accent); }
+        
+        .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-bottom: 100px; }
+        .game-box { 
+            background: var(--card); 
+            border: 1px solid var(--border); 
+            border-radius: 40px; 
+            padding: 50px 40px; 
+            text-align: center; 
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+            position: relative; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 24px; 
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+        .game-box::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(0, 210, 255, 0.05) 100%);
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .game-box:hover::after { opacity: 1; }
+        
+        .game-icon-diamond { font-size: 80px; filter: drop-shadow(0 0 30px var(--accent-glow)); z-index: 1; transition: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .game-overlay { padding: 0; z-index: 1; width: 100%; }
+        .game-overlay h4 { font-size: 24px; color: #fff; margin-bottom: 25px; font-family: 'Unbounded', sans-serif; letter-spacing: 0.02em; }
+        .btn-diamond { 
+            background: rgba(255, 255, 255, 0.03); 
+            color: var(--accent); 
+            border: 1px solid var(--border); 
+            padding: 18px; 
+            width: 100%; 
+            border-radius: 16px; 
+            font-weight: 800; 
+            text-decoration: none; 
+            display: block; 
+            text-transform: uppercase; 
+            transition: 0.3s; 
+            position: relative; 
+            z-index: 1;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 14px;
+        }
+        .game-box:hover { 
+            border-color: var(--accent); 
+            transform: translateY(-15px) scale(1.02); 
+            box-shadow: 0 30px 60px -20px rgba(0, 210, 255, 0.2); 
+            background: rgba(15, 23, 42, 0.8);
+        }
+        .game-box:hover .game-icon-diamond { transform: scale(1.2) translateY(-10px); }
+        .game-box:hover .btn-diamond { 
+            background: linear-gradient(135deg, var(--accent), var(--accent-alt)); 
+            color: #fff; 
+            border-color: transparent;
+            box-shadow: 0 10px 20px -5px var(--accent-glow); 
+        }
+
+        /* Features */
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 100px; }
+        .feature-card { 
+            background: var(--card); 
+            padding: 50px 40px; 
+            border-radius: 32px; 
+            border: 1px solid var(--border); 
+            text-align: center; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
+        }
+        .feature-card:hover { 
+            border-color: var(--accent); 
+            transform: translateY(-8px); 
+            background: rgba(15, 23, 42, 0.7);
+        }
+        .feature-icon { font-size: 56px; margin-bottom: 25px; filter: drop-shadow(0 0 20px var(--accent-glow)); transition: 0.4s; }
+        .feature-card:hover .feature-icon { transform: scale(1.1); }
+        .feature-card h3 { color: #fff; margin-bottom: 15px; font-size: 24px; }
+        .feature-card p { color: var(--text-muted); }
+
+        /* Reviews */
+        .reviews-diamond { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-bottom: 100px; }
+        .rev-diamond-card { 
+            background: var(--card); 
+            padding: 45px; 
+            border-radius: 32px; 
+            border: 1px solid var(--border); 
+            position: relative; 
+            transition: 0.4s; 
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+        .rev-diamond-card:hover { border-color: var(--border-hover); transform: translateY(-5px); }
+        .rev-diamond-card::before { 
+            content: '💎'; 
+            position: absolute; 
+            top: 25px; 
+            right: 35px; 
+            font-size: 30px; 
+            opacity: 0.2; 
+            filter: drop-shadow(0 0 10px var(--accent)); 
+        }
+        .rev-user { font-weight: 800; font-size: 20px; color: var(--accent); margin-bottom: 12px; display: block; font-family: 'Unbounded', sans-serif; }
+        .rev-stars { color: #fbbf24; letter-spacing: 4px; margin-bottom: 20px; display: block; font-size: 14px; }
+        .rev-text { color: var(--text-muted); font-style: italic; font-size: 16px; line-height: 1.8; }
+
+        /* FAQ */
+        .faq-diamond { max-width: 900px; margin: 0 auto 100px; }
+        .faq-item { 
+            background: var(--card); 
+            border: 1px solid var(--border); 
+            border-radius: 24px; 
+            margin-bottom: 16px; 
+            padding: 30px 40px; 
+            cursor: pointer; 
+            transition: all 0.3s; 
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+        .faq-item:hover { border-color: var(--border-hover); background: rgba(15, 23, 42, 0.7); }
+        .faq-question { font-weight: 800; font-size: 18px; display: flex; justify-content: space-between; align-items: center; font-family: 'Unbounded', sans-serif; color: #fff; }
+        .faq-question span { color: var(--accent); font-size: 24px; transition: 0.3s; }
+        .faq-item.active .faq-question span { transform: rotate(45deg); }
+        .faq-answer { margin-top: 20px; color: var(--text-muted); display: none; font-size: 16px; line-height: 1.8; border-top: 1px solid var(--border); padding-top: 20px; }
+        .faq-item.active .faq-answer { display: block; }
+
+        /* SEO Block */
+        .seo-diamond { 
+            background: rgba(15, 23, 42, 0.3); 
+            padding: 80px 60px; 
+            border-radius: 48px; 
+            border: 1px solid var(--border); 
+            line-height: 2; 
+            margin-bottom: 100px; 
+            backdrop-filter: blur(10px);
+        }
+        .seo-diamond h2 { font-size: 32px; margin-bottom: 45px; text-align: center; color: #fff; }
+        .seo-diamond p { margin-bottom: 30px; color: var(--text-muted); font-size: 17px; }
+        .seo-diamond b { color: var(--accent); }
+
+        footer { padding: 100px 0 60px; background: #000; border-top: 1px solid var(--border); text-align: center; }
+        .f-logo { 
+            font-size: 32px; 
+            font-weight: 900; 
+            color: #fff; 
+            margin-bottom: 30px; 
+            display: inline-block; 
+            text-decoration: none; 
+            font-family: 'Unbounded', sans-serif;
+        }
+        .f-logo span { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+        .f-copy { color: var(--text-muted); font-size: 15px; margin-bottom: 40px; }
+        .seo-cloud { font-size: 11px; color: #1a1a1a; margin-top: 60px; text-align: center; max-width: 1000px; margin: 60px auto 0; line-height: 1.6; opacity: 0.5; }
+
+        @media (max-width: 768px) { 
+            .hero { padding: 80px 0 60px; }
+            .hero h1 { font-size: 2.8rem; } 
+            .hero-btns { flex-direction: column; padding: 0 20px; } 
+            .seo-diamond { padding: 40px 24px; } 
+            .btn-main { padding: 18px 32px; }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal { opacity: 0; }
+        .reveal.active { animation: fadeInUp 0.8s ease-out forwards; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        @keyframes shine { 0% { left: -100%; } 100% { left: 100%; } }
+        
+        .shine-effect { position: relative; overflow: hidden; }
+        .shine-effect::after { 
+            content: ""; 
+            position: absolute; 
+            top: 0; 
+            left: -100%; 
+            width: 60%; 
+            height: 100%; 
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); 
+            transform: skewX(-25deg); 
+            animation: shine 4s infinite cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Scroll Top */
+        .scroll-top { 
+            position: fixed; 
+            bottom: 40px; 
+            right: 40px; 
+            width: 60px; 
+            height: 60px; 
+            background: linear-gradient(135deg, var(--accent), var(--accent-alt)); 
+            color: #fff; 
+            border-radius: 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 24px; 
+            cursor: pointer; 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: all 0.4s; 
+            z-index: 1000; 
+            box-shadow: 0 10px 25px -5px var(--accent-glow); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .scroll-top.visible { opacity: 1; visibility: visible; }
+        .scroll-top:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -5px var(--accent); }
+    </style>
+
+</head>
+<body>
+
+    <header>
+        <div class="container nav-inner">
+            <a href="/" class="logo">
+                <span class="logo-emoji">🐻</span>
+                LUCKY<span>BEAR</span>
+            </a>
+            <nav class="nav-links">
+                <a href="https://lbgame777.xyz/2xn84Y">Игры</a>
+                <a href="https://lbgame777.xyz/2xn84Y">Акции</a>
+                <a href="https://lbgame777.xyz/2xn84Y">Контакты</a>
+            </nav>
+            <a href="https://lbgame777.xyz/2xn84Y" class="btn-tg">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.68-.88-.47-1.38-.76-2.23-1.09-.98-.38-.35-.59.21-.1.15.12 2.72 2.49 2.77 2.69.01.03.01.14-.07.2-.08.06-.19.04-.27.02-.12-.02-1.96-1.3-5.54-3.71-.52-.36-.99-.53-1.41-.52-.46.01-1.35.26-2.01.48-.81.27-1.45.42-1.39.89.03.25.38.5.1.75-.2.21-.75.35-1.15.41-.4.06-.8.05-1.2-.02z"/></svg>
+                Бот Телеграм
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero reveal">
+            <div class="container">
+                <span class="hero-logo">🐻</span>
+                <div class="welcome-text">ДОБРО ПОЖАЛОВАТЬ В</div>
+                <h1>LUCKY BEAR БОТ КАЗИНО В ТЕЛЕГРАМ</h1>
+                <p>Лаки Бир казино открывает дорогу к победам прямо в Telegram-боте! Используйте специальное предложение — бонус до 460% на депозит и 200 бесплатных вращений!</p>
+                <div class="hero-btns">
+                    <a href="https://lbgame777.xyz/2xn84Y" class="btn-main btn-filled">Начать играть</a>
+                    <a href="#games" class="btn-main btn-outline">Каталог игр</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="features reveal">
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3>Премиум Слоты</h3>
+                    <p>Лучшие провайдеры мира в одном технологичном Telegram боте.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Быстрый Вывод</h3>
+                    <p>Выплата выигрышей на любые карты и кошельки в течение 5-15 минут.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Полная Защита</h3>
+                    <p>Анонимность и многоуровневая безопасность каждого вашего действия.</p>
+                </div>
+            </div>
+
+            <section id="why" class="why-diamond reveal">
+                <h2>ПОЧЕМУ ВЫБИРАЮТ <span>LUCKY BEAR</span></h2>
+                <div class="why-d-grid">
+                    <div class="why-d-card">
+                        <span class="why-d-icon">🎁</span>
+                        <h3>БОНУС 500%</h3>
+                        <p>Стартовый бонус увеличивает ваш первый депозит в 5 раз — идеальный старт для большой игры.</p>
+                    </div>
+                    <div class="why-d-card featured">
+                        <span class="why-d-icon">💎</span>
+                        <h3>VIP СЕРВИС</h3>
+                        <p>Индивидуальный подход к каждому игроку, персональные менеджеры и эксклюзивные лимиты.</p>
+                    </div>
+                    <div class="why-d-card">
+                        <span class="why-d-icon">🎰</span>
+                        <h3>1000+ СЛОТОВ</h3>
+                        <p>Огромная база сертифицированных игр с самым высоким процентом отдачи на рынке.</p>
+                    </div>
+                </div>
+                <div class="why-d-grid" style="margin-top: 30px;">
+                    <div class="why-d-card">
+                        <span class="why-d-icon">🛡️</span>
+                        <h3>БЕЗОПАСНОСТЬ</h3>
+                        <p>Многоуровневое шифрование данных и полная анонимность каждой транзакции.</p>
+                    </div>
+                    <div class="why-d-card">
+                        <span class="why-d-icon">🌟</span>
+                        <h3>ЛОЯЛЬНОСТЬ</h3>
+                        <p>Еженедельные подарки и кэшбэк до 20% для активных участников клуба Midnight Diamond.</p>
+                    </div>
+                    <div class="why-d-card">
+                        <span class="why-d-icon">📱</span>
+                        <h3>МОБИЛЬНОСТЬ</h3>
+                        <p>Играйте в любимые слоты через Telegram бот в любое время и в любом месте без VPN.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 80px 0 40px; font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: clamp(1.2rem, 4vw, 2.5rem); text-transform: uppercase;">
+                    ИНТЕГРАЦИЯ С <span style="color: var(--accent); text-shadow: 0 0 20px var(--accent-glow);">TELEGRAM LUCKY BEAR BOT</span>
+                </div>
+            </section>
+
+            <div class="section-title reveal">
+                <h2>Топовые Игры</h2>
+            </div>
+            <section id="games" class="games-grid reveal">
+                <div class="game-box shine-effect">
+                    <div class="game-icon-diamond">🍬</div>
+                    <div class="game-overlay">
+                        <h4>Sweet Bonanza</h4>
+                        <a href="https://lbgame777.xyz/2xn84Y" class="btn-diamond">Вход в игру</a>
+                    </div>
+                </div>
+                <div class="game-box shine-effect">
+                    <div class="game-icon-diamond">⚡</div>
+                    <div class="game-overlay">
+                        <h4>Gates of Olympus</h4>
+                        <a href="https://lbgame777.xyz/2xn84Y" class="btn-diamond">Вход в игру</a>
+                    </div>
+                </div>
+                <div class="game-box shine-effect">
+                    <div class="game-icon-diamond">🎰</div>
+                    <div class="game-overlay">
+                        <h4>Sugar Rush</h4>
+                        <a href="https://lbgame777.xyz/2xn84Y" class="btn-diamond">Вход в игру</a>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-title reveal">
+                <h2>Отзывы Игроков</h2>
+            </div>
+            <section class="reviews-diamond reveal">
+                <div class="rev-diamond-card">
+                    <span class="rev-user">Александр К.</span>
+                    <span class="rev-stars">★★★★★</span>
+                    <p class="rev-text">"Lucky Bear — это просто пушка! Дизайн очень стильный, бот работает мгновенно. Выплату 15к получил на Сбер за 5 минут."</p>
+                </div>
+                <div class="rev-diamond-card">
+                    <span class="rev-user">Марина С.</span>
+                    <span class="rev-stars">★★★★★</span>
+                    <p class="rev-text">"Очень нравится подборка слотов. Постоянно добавляют новинки. С бонусом Rish реально зайти и сразу начать выигрывать."</p>
+                </div>
+                <div class="rev-diamond-card">
+                    <span class="rev-user">Иван П.</span>
+                    <span class="rev-stars">★★★★★</span>
+                    <p class="rev-text">"Самое надежное казино в ТГ. Никаких проблем с доступом, зеркала всегда актуальные. Респект команде Лаки Бир!"</p>
+                </div>
+            </section>
+
+            <div class="section-title reveal">
+                <h2>FAQ</h2>
+            </div>
+            <section class="faq-diamond reveal">
+                <div class="faq-item" onclick="this.classList.toggle('active')">
+                    <div class="faq-question">Как начать игру в Лаки Бир? <span>+</span></div>
+                    <div class="faq-answer">Просто перейдите в наш Telegram бот и нажмите "Старт". Вы сразу получите доступ ко всем играм и бонусам.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('active')">
+                    <div class="faq-question">Где найти актуальное зеркало? <span>+</span></div>
+                    <div class="faq-answer">На этой странице всегда размещена рабочая ссылка. Также бот автоматически подбирает доступное зеркало.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('active')">
+                    <div class="faq-question">Какие бонусы дает промокод Rish? <span>+</span></div>
+                    <div class="faq-answer">Промокод Rish дает +460% к первому депозиту и 200 бесплатных вращений в топовых слотах.</div>
+                </div>
+            </section>
+
+            <article class="seo-diamond reveal">
+                <h2>Обзор Lucky Bear</h2>
+                <p><b>Lucky Bear Казино</b> — это проект нового поколения, который сделал ставку на мобильность и доступность. Наш <b>лаки бир бот</b> в Telegram позволяет игрокам наслаждаться азартом в любом месте, обходя любые сетевые ограничения. <b>Лакибир официальный сайт</b> предлагает интуитивно понятный интерфейс и мгновенную регистрацию.</p>
+                <p>Если вы столкнулись с блокировкой, вам поможет <b>рабочее зеркало лаки бир</b>. Мы следим за тем, чтобы <b>рабочее зеркало лакибир</b> обновлялось вовремя, обеспечивая бесперебойный доступ к вашему личному кабинету. На <b>luckybear сайт</b> представлены только лицензионные игры с честным процентом отдачи.</p>
+                <p>Для новых пользователей у нас действует <b>lucky bear промокод</b> Rish. Введите его при первом пополнении, чтобы активировать <b>лакибир бонусы</b> и получить дополнительные фриспины в популярных <b>лакибир слоты</b>. Читайте реальные <b>lucky bear отзывы</b> и убедитесь в надежности нашей платформы. <b>Luckybear casino официальный сайт</b> — это ваш выбор №1!</p>
+            </article>
+        </div>
+    </main>
+
+
+    <footer>
+        <div class="container">
+            <a href="/" class="f-logo">LUCKY <span>BEAR</span></a>
+            <p class="f-copy">© 2026 Lucky Bear. Играйте ответственно. 18+</p>
+            <div class="seo-cloud">
+                lucky bear казино, лаки бир казино, лаки бир бот, lucky bear телеграм бот, lucky bear бот, casino lucky bear, lucky bear промокод, купон lucky bear, lucky bear bot, lucky bear отзывы, лакибир казино, luckybear казино, luckybear бонусы, лакибир бонусы, лакибир официальный сайт, лакибир слоты, рабочее зеркало лакибир, лакибир тг, luckybear tg, luckybear casino, промокод luckybear, luckybear партнерская программа, luckybear bot, luckybear сайт, luckybear играть, лакибир играть, лакибир бот, luckybear бот, lucky bear casino, казино лаки бир, casino luckybear, казино лакибир, luckybear casino мобильная версия, luckybear casino официальный сайт, лаки бир casino, игровые автоматы luckybear casino, luckybear casino official, сайт luckybear casino, казино luckybear, luckybear casino на деньги, лаки беар казино, luckybear casino вход, luckybear casino играть, luckybear casino играть онлайн, лаки бир казино официальный сайт, lucky bear казино официальный сайт, рабочее зеркало lucky bear, лаки бир рабочее зеркало, lucky bear вход, лаки бир вход, lucky bear регистрация, лаки бир регистрация, лаки бир казино зеркало, lucky bear казино зеркало, казино lucky bear, gambling lucky bear, lucky bear казино вход, lucky bear casino вход, lakibir казино, лакибеар казино вход, лаки беар казино регистрация, laki bir casino, лайки бир казино, медведь казино lucky bear, казино с логотипом медведя, лаки бир официальный сайт регистрация, luckybear игровые автоматы, лакибир игровые автоматы, рабочее зеркало лаки бир, lucky bear официальный сайт, лаки бир официальный сайт, lucky bear слоты, лаки бир слоты, казино лакибир регистрация, казино luckybear регистрация, лакибир казино мобильная версия, lucky bear казино онлайн, лаки бир казино онлайн, luckybear вход, лакибир вход
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    <script>
+        // Reveal on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // Scroll Top
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('scrollTop');
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

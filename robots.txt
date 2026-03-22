@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Host: luckybear1.pro
+Host: https://luckybear1.pro
 Sitemap: https://luckybear1.pro/sitemap.xml
